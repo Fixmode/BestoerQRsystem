@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Code Generator - Bestower University</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      text-align: center;
+    }
+    .header {
+      margin-bottom: 30px;
+    }
+    .logo {
+      width: 100px;
+    }
+    input {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      width: 300px;
+    }
+    #qrcode {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <img src="assets/logo.png" alt="Company Logo" class="logo" />
+    <h2>Centre International Universitaire Des Meillures</h2>
+    <h3>Bestower International University</h3>
+  </div>
+
+  <h3>Generate Graduation QR Code</h3>
+
+  <input type="text" id="name" placeholder="Full Name" required>
+  <input type="text" id="matric" placeholder="Matric Number" required>
+  <input type="text" id="grade" placeholder="Grade" required>
+  <input type="text" id="course" placeholder="Course of Study" required>
+  <input type="date" id="date" placeholder="Date of Graduation" required>
+
+  <button onclick="generateQRCode()">Generate QR Code</button>
+
+  <div id="qrcode"></div>
+
+  <script>
+    function generateQRCode() {
+      const name = encodeURIComponent(document.getElementById('name').value);
+      const matric = encodeURIComponent(document.getElementById('matric').value);
+      const grade = encodeURIComponent(document.getElementById('grade').value);
+      const course = encodeURIComponent(document.getElementById('course').value);
+      const date = encodeURIComponent(document.getElementById('date').value);
+
+      if (!name || !matric || !grade || !course || !date) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      const url = `${location.origin}/view.html?name=${name}&matric=${matric}&grade=${grade}&course=${course}&date=${date}`;
+
+      const qrDiv = document.getElementById("qrcode");
+      qrDiv.innerHTML = ""; // Clear previous QR
+      new QRCode(qrDiv, {
+        text: url,
+        width: 200,
+        height: 200
+      });
+    }
+  </script>
+
+</body>
+</html>

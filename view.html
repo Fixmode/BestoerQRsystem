@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Graduation Verification - Bestower University</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .logo {
+      width: 100px;
+    }
+    .info {
+      margin: 15px 0;
+    }
+    .footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #ccc;
+      font-style: italic;
+      text-align: center;  
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <img src="assets/logo.png" alt="Company Logo" class="logo" />
+    <h2>Centre International Universitaire Des Meillures</h2>
+    <h3>Bestower International University</h3>
+  </div>
+
+  <div class="info"><strong>Name:</strong> <span id="name"></span></div>
+  <div class="info"><strong>Matric Number:</strong> <span id="matric"></span></div>
+  <div class="info"><strong>Grade:</strong> <span id="grade"></span></div>
+  <div class="info"><strong>Course of Study:</strong> <span id="course"></span></div>
+  <div class="info"><strong>Date of Graduation:</strong> <span id="date"></span></div>
+
+  <div class="footer">
+    This information has been verified by <br>
+    <strong>Bestower International University</strong>.<br>
+    </p>Verification Status: <strong style="color:green;">Verified</strong><br>
+    </p>Signature: ________________________</p>
+  </div>
+
+  <script>
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return decodeURIComponent(urlParams.get(param) || "Not provided");
+    }
+
+    document.getElementById('name').textContent = getQueryParam('name');
+    document.getElementById('matric').textContent = getQueryParam('matric');
+    document.getElementById('grade').textContent = getQueryParam('grade');
+    document.getElementById('course').textContent = getQueryParam('course');
+    document.getElementById('date').textContent = getQueryParam('date');
+  </script>
+
+</body>
+</html>
